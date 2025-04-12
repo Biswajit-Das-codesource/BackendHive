@@ -18,3 +18,5 @@ dbConnect().then(() => {
     console.log(`server started at ${PORT}`);
   });
 });
+
+console.log("ready to fight")
