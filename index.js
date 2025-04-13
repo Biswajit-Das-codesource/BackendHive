@@ -1,16 +1,22 @@
 import express from "express";
 import dotenv from "dotenv";
 import { dbConnect } from "./DB/db.js";
+import userRoutes from "./routes/user.routes.js"
+import cookieParser from "cookie-parser";
+
 const app = express();
 
 dotenv.config({});
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(cookieParser())
 
 app.get("/", (req, res) => {
   res.send("hello from server");
 });
 
+app.use("/api/v1",userRoutes)
 const PORT = process.env.PORT || 4000;
 
 dbConnect().then(() => {
@@ -19,4 +25,3 @@ dbConnect().then(() => {
   });
 });
 
-console.log("ready to fight")
