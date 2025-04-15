@@ -91,3 +91,21 @@ export async function handleLogout(req, res) {
     });
   }
 }
+
+
+export async function handleGetAllUser(req,res) {
+    const allUser = await usermodel.find({})
+    if(!allUser){
+      return res.status(400).json({
+        message:"Something went wrong",
+        success:false
+      })
+    }
+
+    res.status(200).json({
+      message:"All user",
+      success:true,
+      users:allUser
+    })
+    
+}

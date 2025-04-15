@@ -21,12 +21,10 @@ const userSchema = new mongoose.Schema({
             ref:'works'
         }
     ],
-    pendingInvites:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"users"
-        }
-    ]
+    pendingInvites:{
+        type:Array,
+        default:[]
+    }
 })
 
 export const usermodel = mongoose.model("user",userSchema)

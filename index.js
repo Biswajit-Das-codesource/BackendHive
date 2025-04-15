@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { dbConnect } from "./DB/db.js";
 import userRoutes from "./routes/user.routes.js"
 import cookieParser from "cookie-parser";
-
+import projectRoutes from "./routes/project.routes.js"
 const app = express();
 
 dotenv.config({});
@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1",userRoutes)
+app.use("/api/v1/project",projectRoutes)
 const PORT = process.env.PORT || 4000;
 
 dbConnect().then(() => {
